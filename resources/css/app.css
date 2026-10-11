@@ -1,0 +1,109 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    /* Typography */
+    --font-display: 'Fraunces', ui-serif, Georgia, 'Times New Roman', serif;
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* Brand colors — Palace Of Refuge Gospel Center */
+    --color-burgundy: #4a0e1f;
+    --color-burgundy-dark: #2b0812;
+    --color-burgundy-light: #7a1b34;
+
+    --color-royal-purple: #4b1d6e;
+    --color-purple-dark: #2e1046;
+
+    --color-gold: #c6a15b;
+    --color-gold-light: #e8ce8c;
+    --color-gold-dark: #8b6914;
+
+    --color-cream: #f8f1e4;
+    --color-ivory: #fffdf7;
+    --color-charcoal: #1a1512;
+
+    /* Radius — restrained, never card-heavy */
+    --radius-brand-sm: 0.25rem;
+    --radius-brand: 0.375rem;
+    --radius-brand-lg: 0.75rem;
+
+    /* Shadow */
+    --shadow-brand-sm: 0 1px 2px 0 rgb(26 21 18 / 0.06);
+    --shadow-brand: 0 4px 16px -4px rgb(26 21 18 / 0.18);
+    --shadow-gold-glow: 0 0 0 1px rgb(198 161 91 / 0.35);
+
+    /* Motion */
+    --ease-brand: cubic-bezier(0.4, 0, 0.2, 1);
+    
+}
+
+@layer base {
+    body {
+        @apply bg-ivory text-charcoal font-sans antialiased;
+    }
+
+    h1, h2, h3, h4 {
+        @apply font-display;
+    }
+
+    ::selection {
+        background-color: var(--color-gold-light);
+        color: var(--color-burgundy-dark);
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-gold);
+        outline-offset: 2px;
+    }
+
+    [x-cloak] {
+        display: none !important;
+    }
+}
+
+@layer components {
+    .container-site {
+        @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    }
+
+        .btn-gold {
+        @apply inline-flex items-center justify-center gap-2 rounded-brand border border-gold bg-gold px-5 py-2.5
+            text-sm font-medium text-burgundy-dark transition-colors duration-[220ms] ease-brand
+            hover:border-gold-light hover:bg-gold-light;
+    }
+
+    .btn-outline-cream {
+        @apply inline-flex items-center justify-center gap-2 rounded-brand border border-cream/40 px-5 py-2.5
+            text-sm font-medium text-cream transition-colors duration-[220ms] ease-brand
+            hover:border-gold hover:text-gold;
+    }
+
+        .btn-outline-burgundy {
+        @apply inline-flex items-center justify-center gap-2 rounded-brand border border-burgundy/30 px-5 py-2.5
+            text-sm font-medium text-burgundy transition-colors duration-[220ms] ease-brand
+            hover:border-gold hover:text-gold-dark;
+    }
+
+    .nav-link {
+        @apply relative text-sm font-medium tracking-wide text-cream/85 transition-colors duration-[220ms] ease-brand
+            hover:text-gold;
+    }
+
+    .nav-link[aria-current="page"] {
+        @apply text-gold;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
